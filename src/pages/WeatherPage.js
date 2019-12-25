@@ -1,8 +1,8 @@
 import React from 'react';
-import './indexpage.css';
-import FiveWeather from "../components/FiveWeather";
+import './WeatherPage.css';
+import Weather from "../components/Weather";
 
-class IndexPage extends React.Component {
+class WeatherPage extends React.Component {
     constructor() {
         super()
 
@@ -16,11 +16,11 @@ class IndexPage extends React.Component {
 
         return (
             <div>
-                <FiveWeather />
+                <Weather />
             </div>
         );
     }
 
 }
 
-export default IndexPage;
+export default WeatherPage;
