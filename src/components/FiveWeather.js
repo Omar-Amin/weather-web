@@ -8,9 +8,9 @@ class FiveWeather extends React.Component {
         super()
 
         this.state = {
-            data: [1, 2, 3, 4, 5],
-            items: [{ data: [], day: 0 }],
-            lastDay: { data: [], day: 0 } //maybe used later
+            data: [{ data: [], day: 0 }],
+            lastDay: { data: [], day: 0 }, //maybe used later.
+            finishSearch: false
         }
 
         this.insertData = this.insertData.bind(this)
@@ -22,6 +22,7 @@ class FiveWeather extends React.Component {
         fetch("https://api.openweathermap.org/data/2.5/forecast?q=Copenhagen,DK&appid=" + token)
             .then(response => { return response.json() })
             .then(data => this.insertData(data));
+
     }
 
     // store the 5-days weather information inside its own list
@@ -45,19 +46,23 @@ class FiveWeather extends React.Component {
         });
 
         this.setState({
-            items: cleanedData,
-            lastDay: { data: tempList, day: currentDay }
+            data: cleanedData,
+            lastDay: { data: tempList, day: currentDay },
+            finishSearch: true
         })
     }
 
     render() {
-        console.log(this.state.items)
+        const { finishSearch, data } = this.state
+
         return (
             <div className="container">
                 <div className="weather-table">
-                    {this.state.items.map(item => (
-                        <Weather key={item.day} day={item.day} data={item.data} />
-                    ))}
+                    {finishSearch === true ?
+                        data.map(item => (
+                            <Weather key={item.day} day={item.day} data={item.data} temperature={Math.round(item.data[0].main.temp - 273.15)} />))
+                        : null}
+
                 </div>
             </div>
 
