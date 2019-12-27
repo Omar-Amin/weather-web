@@ -9,7 +9,8 @@ class FiveWeather extends React.Component {
 
         this.state = {
             data: [1, 2, 3, 4, 5],
-            items: [{}]
+            items: [{ data: [], day: 0 }],
+            lastDay: { data: [], day: 0 } //maybe used later
         }
 
         this.insertData = this.insertData.bind(this)
@@ -35,7 +36,7 @@ class FiveWeather extends React.Component {
         listOfWeathers.forEach(element => {
             date2 = new Date(element.dt * 1000)
             if (currentDay !== date2.getDay()) {
-                cleanedData.push(tempList);
+                cleanedData.push({ data: tempList, day: currentDay });
                 tempList = [];
                 currentDay = date2.getDay();
             }
@@ -43,10 +44,9 @@ class FiveWeather extends React.Component {
 
         });
 
-        // the last list is not added, thus to make sure we push it at the end
-        cleanedData.push(tempList)
         this.setState({
-            items: cleanedData
+            items: cleanedData,
+            lastDay: { data: tempList, day: currentDay }
         })
     }
 
@@ -55,8 +55,8 @@ class FiveWeather extends React.Component {
         return (
             <div className="container">
                 <div className="weather-table">
-                    {this.state.data.map(item => (
-                        <Weather key={item} day={item} />
+                    {this.state.items.map(item => (
+                        <Weather key={item.day} day={item.day} data={item.data} />
                     ))}
                 </div>
             </div>

@@ -14,7 +14,8 @@ class Weather extends React.Component {
 
     componentDidMount() {
         this.setState({
-            day: this.props.day
+            day: this.props.day,
+            data: this.props.data
         });
     }
 
