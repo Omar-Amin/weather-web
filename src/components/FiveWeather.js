@@ -9,15 +9,45 @@ class FiveWeather extends React.Component {
 
         this.state = {
             data: [1, 2, 3, 4, 5],
-            items: {}
+            items: [{}]
         }
+
+        this.insertData = this.insertData.bind(this)
 
     }
 
     componentDidMount() {
+        //fetches data from api (token is the API-key)
         fetch("https://api.openweathermap.org/data/2.5/forecast?q=Copenhagen,DK&appid=" + token)
             .then(response => { return response.json() })
-            .then(data => this.setState({ items: data }));
+            .then(data => this.insertData(data));
+    }
+
+    // store the 5-days weather information inside its own list
+    // day 1 = today, day 2 = tomorrow etc.
+    insertData(jsonObject) {
+        const listOfWeathers = jsonObject.list;
+        const date1 = new Date()
+        let date2 = new Date()
+        var currentDay = date1.getDay();
+        let tempList = []
+        let cleanedData = [];
+        listOfWeathers.forEach(element => {
+            date2 = new Date(element.dt * 1000)
+            if (currentDay !== date2.getDay()) {
+                cleanedData.push(tempList);
+                tempList = [];
+                currentDay = date2.getDay();
+            }
+            tempList.push(element);
+
+        });
+
+        // the last list is not added, thus to make sure we push it at the end
+        cleanedData.push(tempList)
+        this.setState({
+            items: cleanedData
+        })
     }
 
     render() {
