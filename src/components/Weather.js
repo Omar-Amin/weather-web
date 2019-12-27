@@ -9,26 +9,35 @@ class Weather extends React.Component {
         this.state = {
             day: 0,
             data: [{}],
-            temperature: "empty"
+            temperature: "empty",
+            wind: "",
+            humidity: ""
         }
     }
 
     componentDidMount() {
-        const { day, data, temperature } = this.props
+        const { wind, day, data, temperature, humidity } = this.props
         this.setState({
             day: day,
             data: data,
-            temperature: temperature
+            temperature: temperature,
+            wind: wind,
+            humidity: humidity
         });
     }
 
     render() {
-        const { data, day, temperature } = this.state
-        console.log(data) //debugging
+        const { wind, data, day, temperature, humidity } = this.state
+        const firstData = data[0];
+        console.log(firstData) //debugging
         return (
-            <div>
+            <div className="weather-container">
                 <h1 className="weather-style">{days[day]}</h1>
-                <h2>{temperature}</h2>
+                <h2 className="degree-style">{temperature} °C</h2>
+                <h3 className="humidity-percentage">{humidity}%</h3>
+                <h3 className="humidity-style">Humidity:</h3>
+                <h3 className="wind-style">Wind:</h3>
+                <div className="wind-speed">{wind} km/h</div>
             </div>
         );
     }

@@ -60,7 +60,13 @@ class FiveWeather extends React.Component {
                 <div className="weather-table">
                     {finishSearch === true ?
                         data.map(item => (
-                            <Weather key={item.day} day={item.day} data={item.data} temperature={Math.round(item.data[0].main.temp - 273.15)} />))
+                            <Weather
+                                key={item.day}
+                                day={item.day}
+                                data={item.data}
+                                temperature={Math.round(item.data[0].main.temp - 273.15)}
+                                humidity={item.data[0].main.humidity}
+                                wind={item.data[0].wind.speed} />))
                         : null}
 
                 </div>

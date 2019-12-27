@@ -8,8 +8,8 @@
     margin:auto;
 
     max-width:1600px;
-    max-height:350px;
-    overflow:auto;
+    max-height:302px;
+    min-height: 302px;
   }
 
 .weather-table{
@@ -23,6 +23,6 @@
     column-count: 5;
     column-gap: 3%;
     column-width: 30%;
-    min-width: 900px; /*change depending on layout*/
+    min-width: 1600px; /*change depending on layout*/
 }
 
