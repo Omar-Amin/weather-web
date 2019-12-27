@@ -1,12 +1,13 @@
 import React from 'react';
 import './FiveWeather.css';
+import Weather from "./Weather";
 
 class FiveWeather extends React.Component {
     constructor() {
         super()
 
         this.state = {
-            data: []
+            data: [1, 2, 3, 4, 5]
         }
 
     }
@@ -14,13 +15,14 @@ class FiveWeather extends React.Component {
     render() {
 
         return (
-            <div>
-                <h1>weather1</h1>
-                <h1>weather2</h1>
-                <h1>weather3</h1>
-                <h1>weather4</h1>
-                <h1>weather5</h1>
+            <div className="container">
+                <div className="weather-table">
+                    {this.state.data.map(item => (
+                        <Weather day={item} />
+                    ))}
+                </div>
             </div>
+
         );
     }
 

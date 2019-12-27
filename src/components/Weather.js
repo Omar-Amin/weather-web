@@ -12,11 +12,17 @@ class Weather extends React.Component {
 
     }
 
+    componentDidMount() {
+        this.setState({
+            day: this.props.day
+        });
+    }
+
     render() {
 
         return (
             <div>
-                <h1>weather1</h1>
+                <h1 className="weather-style">weather {this.state.day}</h1>
             </div>
         );
     }

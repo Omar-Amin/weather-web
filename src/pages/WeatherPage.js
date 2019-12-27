@@ -1,6 +1,6 @@
 import React from 'react';
 import './WeatherPage.css';
-import Weather from "../components/Weather";
+import DetailedWeather from '../components/DetailedWeather';
 
 class WeatherPage extends React.Component {
     constructor() {
@@ -16,7 +16,7 @@ class WeatherPage extends React.Component {
 
         return (
             <div>
-                <Weather />
+                <DetailedWeather />
             </div>
         );
     }
