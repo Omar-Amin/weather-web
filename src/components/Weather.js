@@ -23,23 +23,26 @@ class Weather extends React.Component {
             temperature: temperature,
             wind: wind,
             humidity: humidity
-        });
+        })
     }
 
     render() {
         const { wind, data, day, temperature, humidity } = this.state
-        const firstData = data[0];
+        const firstData = data[0]
         console.log(firstData) //debugging
         return (
             <div className="weather-container">
-                <h1 className="weather-style">{days[day]}</h1>
-                <h2 className="degree-style">{temperature} °C</h2>
-                <h3 className="humidity-percentage">{humidity}%</h3>
-                <h3 className="humidity-style">Humidity:</h3>
-                <h3 className="wind-style">Wind:</h3>
-                <div className="wind-speed">{wind} km/h</div>
+                <div className="card-style">
+                    <div className="weather-style">{days[day]}</div>
+                    <div className="degree-style">{temperature} °C</div>
+                    <div className="humidity-style">Humidity:</div>
+                    <div className="humidity-percentage">{humidity}%</div>
+                    <div className="wind-style">Wind:</div>
+                    <div className="wind-speed">{wind} km/h</div>
+                </div>
+
             </div>
-        );
+        )
     }
 
 }

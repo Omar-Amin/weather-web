@@ -9,7 +9,6 @@ class WeatherPage extends React.Component {
         this.state = {
             data: []
         }
-
     }
 
     render() {

@@ -1,63 +1,100 @@
 .weather-style{
-    position: relative;
-    padding-left: 20px;
-    padding-top: 20px;
+    margin-left: 20px;
+    margin-top: 15px;
+    grid-row-start: title;
+    grid-row-end: degrees;
     font-size: 36px;
     font-weight: 600;
-    margin: 0rem;
     color: #556382;
 }
 
-.degree-style{
+.card-style{
     position: relative;
-    padding-left: 20px;
+    background: #212936;
+    width: 302px;
+    height: 302px;
+}
+
+.degree-style{
+    grid-row-start: degrees;
+    grid-row-end: humidity;
     font-weight: bold;
     font-size: 96px;
-    margin: 0rem;
+    margin-left: 20px;
     color: #A2AECB;
 }
 
 .humidity-style{
-    position: relative;
+    display: inline;
+    float: left;
+    grid-row-start: humidity;
+    grid-row-end: wind;
     font-size: 24px;    
     color: #556382;
-    top: -80px;
+    margin-left: 20px;
     font-weight: 600;
-    padding-left: 20px;
 }
 
 .humidity-percentage{
-    position: relative;
-    top: -25px;
+    display: inline;
+    float: right;
+    grid-row-start: humidity;
+    grid-row-end: wind;
     font-weight: 600;
     font-size: 24px;
     text-align: right;
-    padding-right: 20px;
+    padding-left: 20px;
+    margin-right: 20px;
     color: #A2AECB;
 }
 
 .wind-style{
-    position: relative;
+    display: inline;
+    float: left;
+    grid-row-start: wind;
+    grid-row-end: container-end;
     font-weight: 600;
     font-size: 24px;
     line-height: 28px;
-    padding-left: 20px;
+    padding: 20px;
     color: #556382;
-    top: -85px;
 }
 
 .wind-speed{
-    position: relative;
-    top: -140px;
+    display: inline;
+    float: right;
+    grid-row-start: wind;
+    grid-row-end: container-end;
     font-weight: 600;
     font-size: 24px;
     text-align: right;
-    padding-right: 20px;
+    padding: 20px;
     color: #A2AECB;
 }
 
 .weather-container{
-    width: 302px;
-    height: 302px;
-    background: #212936;
+    display: grid;
+    grid-template-rows: [title] 75px [degrees] 115px [humidity] 50px [wind] 50px [container-end];
+    width: 322px;
+    height: 322px;
+    overflow: hidden;
+}
+
+.card-style:hover{
+    height: 315px;
+    width: 315px;
+    background: #5697ff;
+    cursor: pointer;
+}
+
+.card-style:hover .degree-style{
+    color: #FFFFFF;
+}
+
+.card-style:hover .wind-speed{
+    color: #FFFFFF;
+}
+
+.card-style:hover .humidity-percentage{
+    color: #FFFFFF;
 }

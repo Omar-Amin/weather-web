@@ -21,27 +21,27 @@ class FiveWeather extends React.Component {
         //fetches data from api (token is the API-key)
         fetch("https://api.openweathermap.org/data/2.5/forecast?q=Copenhagen,DK&appid=" + token)
             .then(response => { return response.json() })
-            .then(data => this.insertData(data));
+            .then(data => this.insertData(data))
 
     }
 
     // store the 5-days weather information inside its own list
     // day 1 = today, day 2 = tomorrow etc.
     insertData(jsonObject) {
-        const listOfWeathers = jsonObject.list;
+        const listOfWeathers = jsonObject.list
         const date1 = new Date()
         let date2 = new Date()
-        var currentDay = date1.getDay();
+        var currentDay = date1.getDay()
         let tempList = []
-        let cleanedData = [];
+        let cleanedData = []
         listOfWeathers.forEach(element => {
             date2 = new Date(element.dt * 1000)
             if (currentDay !== date2.getDay()) {
-                cleanedData.push({ data: tempList, day: currentDay });
-                tempList = [];
-                currentDay = date2.getDay();
+                cleanedData.push({ data: tempList, day: currentDay })
+                tempList = []
+                currentDay = date2.getDay()
             }
-            tempList.push(element);
+            tempList.push(element)
 
         });
 
@@ -71,7 +71,6 @@ class FiveWeather extends React.Component {
 
                 </div>
             </div>
-
         );
     }
 
