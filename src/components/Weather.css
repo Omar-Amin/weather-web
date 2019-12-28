@@ -83,7 +83,7 @@
 .card-style:hover{
     height: 315px;
     width: 315px;
-    background: #5697ff;
+    background: rgb(98, 154, 245);
     cursor: pointer;
 }
 
@@ -91,6 +91,17 @@
     color: #FFFFFF;
 }
 
+.card-style:hover .wind-style{
+    color: #b6cdff;
+}
+
+.card-style:hover .humidity-style{
+    color: #b6cdff;
+}
+
+.card-style:hover .weather-style{
+    color: #FFFFFF;
+}
 .card-style:hover .wind-speed{
     color: #FFFFFF;
 }

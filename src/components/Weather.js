@@ -1,6 +1,8 @@
 import React from 'react';
 import './Weather.css';
 import days from "../data/days"
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+
 
 class Weather extends React.Component {
     constructor() {
@@ -13,6 +15,7 @@ class Weather extends React.Component {
             wind: "",
             humidity: ""
         }
+
     }
 
     componentDidMount() {
@@ -31,17 +34,22 @@ class Weather extends React.Component {
         const firstData = data[0]
         console.log(firstData) //debugging
         return (
-            <div className="weather-container">
-                <div className="card-style">
-                    <div className="weather-style">{days[day]}</div>
-                    <div className="degree-style">{temperature} °C</div>
-                    <div className="humidity-style">Humidity:</div>
-                    <div className="humidity-percentage">{humidity}%</div>
-                    <div className="wind-style">Wind:</div>
-                    <div className="wind-speed">{wind} km/h</div>
-                </div>
+            <Router>
+                <Link to={"/" + days[day]} style={{ textDecoration: 'none' }}>
+                    <div className="weather-container" onClick={() => this.props.switchToDetailed(data)}>
+                        <div className="card-style">
+                            <div className="weather-style">{days[day]}</div>
+                            <div className="degree-style">{temperature} °C</div>
+                            <div className="humidity-style">Humidity:</div>
+                            <div className="humidity-percentage">{humidity}%</div>
+                            <div className="wind-style">Wind:</div>
+                            <div className="wind-speed">{wind} km/h</div>
+                        </div>
 
-            </div>
+                    </div>
+                </Link>
+            </Router>
+
         )
     }
 

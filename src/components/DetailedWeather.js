@@ -1,5 +1,5 @@
 import React from 'react';
-//import './Weather.css';
+import './DetailedWeather.css';
 
 class DetailedWeather extends React.Component {
     constructor() {
@@ -15,7 +15,7 @@ class DetailedWeather extends React.Component {
     render() {
 
         return (
-            <div>
+            <div className="dw-container" onClick={() => this.props.switchToWeathers()}>
             </div>
         );
     }

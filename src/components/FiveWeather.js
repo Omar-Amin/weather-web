@@ -2,6 +2,7 @@ import React from 'react';
 import './FiveWeather.css';
 import Weather from "./Weather";
 import token from "../data/token";
+import DetailedWeather from './DetailedWeather';
 
 class FiveWeather extends React.Component {
     constructor() {
@@ -10,11 +11,13 @@ class FiveWeather extends React.Component {
         this.state = {
             data: [{ data: [], day: 0 }],
             lastDay: { data: [], day: 0 }, //maybe used later.
-            finishSearch: false
+            finishSearch: false,
+            dwOpened: false
         }
 
         this.insertData = this.insertData.bind(this)
-
+        this.switchToDetailed = this.switchToDetailed.bind(this)
+        this.switchToWeathers = this.switchToWeathers.bind(this)
     }
 
     componentDidMount() {
@@ -28,6 +31,7 @@ class FiveWeather extends React.Component {
     // store the 5-days weather information inside its own list
     // day 1 = today, day 2 = tomorrow etc.
     insertData(jsonObject) {
+        console.log(jsonObject)
         const listOfWeathers = jsonObject.list
         const date1 = new Date()
         let date2 = new Date()
@@ -51,26 +55,44 @@ class FiveWeather extends React.Component {
             finishSearch: true
         })
     }
+    // switch to DetailedWeather when click on a weather
+    switchToDetailed(data) {
+        this.setState({
+            dwOpened: true
+        })
+        console.log(data)
+    }
+
+    switchToWeathers() {
+        this.setState({
+            dwOpened: false
+        })
+    }
 
     render() {
         const { finishSearch, data } = this.state
 
         return (
-            <div className="container">
-                <div className="weather-table">
-                    {finishSearch === true ?
-                        data.map(item => (
-                            <Weather
-                                key={item.day}
-                                day={item.day}
-                                data={item.data}
-                                temperature={Math.round(item.data[0].main.temp - 273.15)}
-                                humidity={item.data[0].main.humidity}
-                                wind={item.data[0].wind.speed} />))
-                        : null}
+            <div>
+                {this.state.dwOpened === true ? <DetailedWeather switchToWeathers={this.switchToWeathers} /> :
+                    <div className="container">
+                        <div className="weather-table">
+                            {finishSearch === true ?
+                                data.map(item => (
+                                    <Weather
+                                        key={item.day}
+                                        day={item.day}
+                                        data={item.data}
+                                        temperature={Math.round(item.data[0].main.temp - 273.15)}
+                                        humidity={item.data[0].main.humidity}
+                                        wind={item.data[0].wind.speed}
+                                        switchToDetailed={this.switchToDetailed} />))
+                                : null}
 
-                </div>
+                        </div>
+                    </div>}
             </div>
+
         );
     }
 
