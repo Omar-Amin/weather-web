@@ -1,4 +1,4 @@
-.weather-style{
+.weather-style {
     margin-left: 20px;
     margin-top: 15px;
     grid-row-start: title;
@@ -8,34 +8,34 @@
     color: #556382;
 }
 
-.card-style{
+.card-style {
     position: relative;
     background: #212936;
-    width: 302px;
-    height: 302px;
+    width: 292px;
+    height: 292px;
 }
 
-.degree-style{
+.degree-style {
     grid-row-start: degrees;
     grid-row-end: humidity;
     font-weight: bold;
     font-size: 96px;
     margin-left: 20px;
-    color: #A2AECB;
+    color: #a2aecb;
 }
 
-.humidity-style{
+.humidity-style {
     display: inline;
     float: left;
     grid-row-start: humidity;
     grid-row-end: wind;
-    font-size: 24px;    
+    font-size: 24px;
     color: #556382;
     margin-left: 20px;
     font-weight: 600;
 }
 
-.humidity-percentage{
+.humidity-percentage {
     display: inline;
     float: right;
     grid-row-start: humidity;
@@ -45,10 +45,10 @@
     text-align: right;
     padding-left: 20px;
     margin-right: 20px;
-    color: #A2AECB;
+    color: #a2aecb;
 }
 
-.wind-style{
+.wind-style {
     display: inline;
     float: left;
     grid-row-start: wind;
@@ -60,7 +60,7 @@
     color: #556382;
 }
 
-.wind-speed{
+.wind-speed {
     display: inline;
     float: right;
     grid-row-start: wind;
@@ -69,43 +69,43 @@
     font-size: 24px;
     text-align: right;
     padding: 20px;
-    color: #A2AECB;
+    color: #a2aecb;
 }
 
-.weather-container{
+.weather-container {
     display: grid;
     grid-template-rows: [title] 75px [degrees] 115px [humidity] 50px [wind] 50px [container-end];
-    width: 322px;
-    height: 322px;
+    width: 305px;
+    height: 305px;
     overflow: hidden;
 }
 
-.card-style:hover{
-    height: 315px;
-    width: 315px;
+.card-style:hover {
+    height: 305px;
+    width: 305px;
     background: rgb(98, 154, 245);
     cursor: pointer;
 }
 
-.card-style:hover .degree-style{
-    color: #FFFFFF;
+.card-style:hover .degree-style {
+    color: #ffffff;
 }
 
-.card-style:hover .wind-style{
+.card-style:hover .wind-style {
     color: #b6cdff;
 }
 
-.card-style:hover .humidity-style{
+.card-style:hover .humidity-style {
     color: #b6cdff;
 }
 
-.card-style:hover .weather-style{
-    color: #FFFFFF;
+.card-style:hover .weather-style {
+    color: #ffffff;
 }
-.card-style:hover .wind-speed{
-    color: #FFFFFF;
+.card-style:hover .wind-speed {
+    color: #ffffff;
 }
 
-.card-style:hover .humidity-percentage{
-    color: #FFFFFF;
+.card-style:hover .humidity-percentage {
+    color: #ffffff;
 }
