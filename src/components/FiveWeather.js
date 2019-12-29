@@ -12,7 +12,8 @@ class FiveWeather extends React.Component {
             data: [{ data: [], day: 0, temperature: 0 }],
             lastDay: { data: [], day: 0, temperature: 0 }, //maybe used later.
             finishSearch: false,
-            dwOpened: false
+            dwOpened: false,
+            currentData: [{}]
         };
 
         this.insertData = this.insertData.bind(this);
@@ -74,9 +75,9 @@ class FiveWeather extends React.Component {
     // switch to DetailedWeather when click on a weather
     switchToDetailed(data) {
         this.setState({
-            dwOpened: true
+            dwOpened: true,
+            currentData: data
         });
-        console.log(data);
     }
 
     switchToWeathers() {
@@ -86,11 +87,11 @@ class FiveWeather extends React.Component {
     }
 
     render() {
-        const { finishSearch, data } = this.state;
+        const { finishSearch, data, currentData } = this.state;
         return (
             <div>
                 {this.state.dwOpened === true ? (
-                    <DetailedWeather switchToWeathers={this.switchToWeathers} />) :
+                    <DetailedWeather switchToWeathers={this.switchToWeathers} data={currentData} />) :
                     (<div className="container">
                         <div className="weather-table">
                             {finishSearch === true

@@ -8,12 +8,20 @@ class DetailedWeather extends React.Component {
 
         this.state = {
             day: "",
-            degree: 0
+            degree: 0,
+            data: [{}]
         }
 
     }
 
+    componentWillMount() {
+        this.setState({
+            data: this.props.data
+        })
+    }
+
     render() {
+        console.log(this.state.data)
         return (
             <Router>
                 <div className="dw-container">

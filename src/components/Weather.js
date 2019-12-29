@@ -31,7 +31,6 @@ class Weather extends React.Component {
 
     render() {
         const { wind, data, day, temperature, humidity } = this.state
-        const firstData = data[0]
 
         return (
             <Router>
