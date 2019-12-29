@@ -42,7 +42,7 @@ class Weather extends React.Component {
                             <div className="humidity-style">Humidity:</div>
                             <div className="humidity-percentage">{humidity}%</div>
                             <div className="wind-style">Wind:</div>
-                            <div className="wind-speed">{wind} km/h</div>
+                            <div className="wind-speed">{wind} m/s</div>
                         </div>
                     </Link>
                 </div>

@@ -46,7 +46,7 @@ class DetailedWeather extends React.Component {
                         <div className="humidity-detailed">Humidity</div>
                         <div className="humidity-percentage-detailed">{humidity}%</div>
                         <div className="wind-detailed">Wind</div>
-                        <div className="wind-speed-detailed">{wind} km/h</div>
+                        <div className="wind-speed-detailed">{wind} m/s</div>
                     </div>
 
                     <div className="exit-style" >
