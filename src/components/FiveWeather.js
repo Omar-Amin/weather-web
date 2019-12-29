@@ -12,7 +12,7 @@ class FiveWeather extends React.Component {
             data: [{ data: [], day: 0 }],
             lastDay: { data: [], day: 0 }, //maybe used later.
             finishSearch: false,
-            dwOpened: true
+            dwOpened: false
         };
 
         this.insertData = this.insertData.bind(this);

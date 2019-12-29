@@ -35,9 +35,9 @@ class Weather extends React.Component {
         console.log(firstData) //debugging
         return (
             <Router>
-                <Link to={"/" + days[day]} style={{ textDecoration: 'none' }}>
-                    <div className="weather-container" onClick={() => this.props.switchToDetailed(data)}>
-                        <div className="card-style">
+                <div className="weather-container">
+                    <Link to={"/" + days[day]} style={{ textDecoration: 'none' }}>
+                        <div className="card-style" onClick={() => this.props.switchToDetailed(data)}>
                             <div className="weather-style">{days[day]}</div>
                             <div className="degree-style">{temperature} °C</div>
                             <div className="humidity-style">Humidity:</div>
@@ -45,10 +45,9 @@ class Weather extends React.Component {
                             <div className="wind-style">Wind:</div>
                             <div className="wind-speed">{wind} km/h</div>
                         </div>
-
-                    </div>
-                </Link>
-            </Router>
+                    </Link>
+                </div>
+            </Router >
 
         )
     }
