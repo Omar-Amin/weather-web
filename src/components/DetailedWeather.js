@@ -8,19 +8,29 @@ class DetailedWeather extends React.Component {
 
         this.state = {
             day: "",
-            degree: 0,
-            data: [{}]
+            temperature: 0,
+            data: [{}],
+            city: "",
+            humidity: 0,
+            wind: 0
         }
 
     }
 
     componentWillMount() {
+        const { data, city } = this.props
+
         this.setState({
-            data: this.props.data
+            data: data.data,
+            city: city,
+            temperature: data.temperature,
+            humidity: data.humidity,
+            wind: data.wind
         })
     }
 
     render() {
+        const { humidity, temperature, city, wind } = this.state
         console.log(this.state.data)
         return (
             <Router>
@@ -29,11 +39,19 @@ class DetailedWeather extends React.Component {
                         graph
                     </div>
                     <div className="info-style">
-                        info
+                        <div className="city-style">{city}</div>
+                        <div className="degree-container">
+                            <div className="degree-style-detailed">{temperature}°</div>
+                        </div>
+                        <div className="humidity-detailed">Humidity</div>
+                        <div className="humidity-percentage-detailed">{humidity}%</div>
+                        <div className="wind-detailed">Wind</div>
+                        <div className="wind-speed-detailed">{wind} km/h</div>
                     </div>
+
                     <div className="exit-style" >
                         <Link to="/" style={{ textDecoration: 'none' }}>
-                            <i class="material-icons" onClick={() => this.props.switchToWeathers()}>close</i>
+                            <i className="material-icons" onClick={() => this.props.switchToWeathers()}>close</i>
                         </Link>
                     </div>
                 </div>

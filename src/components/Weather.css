@@ -1,8 +1,8 @@
 .weather-style {
-    margin-left: 20px;
-    margin-top: 15px;
     grid-row-start: title;
     grid-row-end: degrees;
+    margin-left: 20px;
+    margin-top: 15px;
     font-size: 36px;
     font-weight: 600;
     color: #556382;

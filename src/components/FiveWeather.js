@@ -13,7 +13,9 @@ class FiveWeather extends React.Component {
             lastDay: { data: [], day: 0, temperature: 0, wind: 0, humidity: 0 }, //maybe used later.
             finishSearch: false,
             dwOpened: false,
-            currentData: [{}]
+            currentData: [{}],
+            city: "",
+            country: ""
         };
 
         this.insertData = this.insertData.bind(this);
@@ -23,9 +25,17 @@ class FiveWeather extends React.Component {
 
     componentDidMount() {
         //fetches data from api (token is the API-key)
+        const city = "Copenhagen"
+        const country = "DK"
+
+        this.setState({
+            city: city,
+            country: country
+        })
+
         fetch(
-            "https://api.openweathermap.org/data/2.5/forecast?q=Copenhagen,DK&appid=" +
-                token
+            "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "," + country + "&appid=" +
+            token
         )
             .then(response => {
                 return response.json();
@@ -94,7 +104,7 @@ class FiveWeather extends React.Component {
     }
 
     // switch to DetailedWeather when click on a weather
-    switchToDetailed(data) {
+    switchToDetailed(data, degree) {
         this.setState({
             dwOpened: true,
             currentData: data
@@ -108,35 +118,36 @@ class FiveWeather extends React.Component {
     }
 
     render() {
-        const { finishSearch, data, currentData } = this.state;
+        const { finishSearch, data, currentData, city } = this.state;
         return (
             <div>
                 {this.state.dwOpened === true ? (
                     <DetailedWeather
                         switchToWeathers={this.switchToWeathers}
                         data={currentData}
+                        city={city}
                     />
                 ) : (
-                    <div className="container">
-                        <div className="weather-table">
-                            {finishSearch === true
-                                ? data.map(item => (
-                                      <Weather
-                                          key={item.day}
-                                          day={item.day}
-                                          data={item.data}
-                                          temperature={item.temperature}
-                                          humidity={item.humidity}
-                                          wind={item.wind}
-                                          switchToDetailed={
-                                              this.switchToDetailed
-                                          }
-                                      />
-                                  ))
-                                : null}
+                        <div className="container">
+                            <div className="weather-table">
+                                {finishSearch === true
+                                    ? data.map(item => (
+                                        <Weather
+                                            key={item.day}
+                                            day={item.day}
+                                            data={item}
+                                            temperature={item.temperature}
+                                            humidity={item.humidity}
+                                            wind={item.wind}
+                                            switchToDetailed={
+                                                this.switchToDetailed
+                                            }
+                                        />
+                                    ))
+                                    : null}
+                            </div>
                         </div>
-                    </div>
-                )}
+                    )}
             </div>
         );
     }

@@ -2,11 +2,11 @@
 
 .dw-container{
     display: grid;
-    grid-template-rows: [main] 50px [info] 115px [graph-start] 400px [graph-end] 50px [container-end];
+    grid-template-rows: [main] 50px [info] 515px [graph-end] 50px [container-end];
     grid-template-columns: [main] 50px [info] 250px [graph-start] 650px [graph-end] 50px [container-end];
     width: 1000px;
     height: 615px;
-    background: #212936;
+    background: rgb(98, 154, 245);
     overflow: hidden;
     position: absolute; /*it can be fixed too*/
     left: 0;
@@ -17,21 +17,37 @@
 }
 
 .graph-style{
-    grid-row-start: graph-start;
+    grid-row-start: info;
     grid-row-end: graph-end;
     grid-column-start: graph-start;
     grid-column-end: graph-end;
-    
+    margin-top: 10px;
+    width:600px;
+    height: 515px;
     color: cornsilk;
+    background-color: darkgray;
+}
+
+.city-style{
+    grid-row-start: city;
+    grid-row-end: temperature;
+    margin-left: 10px;
+    font-weight: 600;
+    max-width: 20px;
+    font-size: 26px;
+    color: #e8efff;
 }
 
 .info-style{
+    display: grid;
     grid-row-start: info;
-    grid-row-end: graph-start;
+    grid-row-end: graph-end;
     grid-column-start: info;
     grid-column-end: graph-start;
-    
-    color: cornsilk;
+    margin-top: 10px;
+    width: 240px;
+    height: 515px;
+    grid-template-rows: [city] 50px [temperature] 275px [humidity] 50px [wind] 50px [info-end];
 }
 
 .exit-style{
@@ -39,8 +55,64 @@
     grid-row-end: info;
     grid-column-start: main;
     grid-column-end: info;
-    
-    color: cornsilk;
+}
+
+.degree-style-detailed{
+    font-weight: bold;
+    font-size: 125px;
+    padding-top: 60px;
+    padding-bottom: 75px;
+    margin-left: 10px;
+    color: #ffffff;
+}
+
+.degree-container{
+    grid-row-start: temperature;
+    grid-row-end: humidity;
+    height: 20px;
+    width: 20px;
+}
+
+.humidity-detailed{
+    grid-row-start: humidity;
+    grid-row-end: wind;
+    font-size: 20px;
+    margin-top: 10px;
+    margin-left: 10px;
+    color: #d0deff;
+}
+
+.humidity-percentage-detailed{
+    grid-row-start: humidity;
+    grid-row-end: wind;
+    font-size: 20px;
+    text-align: right;
+    margin-top: 10px;
+    margin-right: 10px;
+    color: #d0deff;
+}
+
+.wind-detailed{
+    display: inline;
+    float: left;
+    grid-row-start: wind;
+    grid-row-end: info-end;
+    font-size: 20px;
+    margin-top: 10px;
+    margin-left: 10px;
+    color: #d0deff;
+}
+
+.wind-speed-detailed{
+    display: inline;
+    float: right;
+    grid-row-start: wind;
+    grid-row-end: info-end;
+    text-align: right;
+    font-size: 20px;
+    margin-right: 10px;
+    margin-top: 10px;
+    color: #d0deff;
 }
 
 .material-icons{
@@ -48,10 +120,10 @@
     content: "close";
     padding: 10px;
     font-size: 40px;
-    color: #a2aecb;
+    color: #b6cdff;
 }
 
 .material-icons:hover{
     transform: scale(1.1);
-    color: #b6cdff;
+    color: #ffffff;
 }
