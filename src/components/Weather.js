@@ -1,7 +1,7 @@
 import React from 'react';
 import './Weather.css';
 import days from "../data/days"
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 
 class Weather extends React.Component {

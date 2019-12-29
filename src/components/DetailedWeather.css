@@ -1,5 +1,42 @@
 .dw-container{
-    background-color: brown;
-    height: 1000px;
+    display: grid;
+    grid-template-rows: [main] 50px [info] 115px [graph-start] 400px [graph-end] 50px [container-end];
+    grid-template-columns: [main] 50px [info] 250px [graph-start] 650px [graph-end] 50px [container-end];
     width: 1000px;
+    height: 615px;
+    background: #212936;
+    overflow: hidden;
+    position: absolute; /*it can be fixed too*/
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.graph-style{
+    grid-row-start: graph-start;
+    grid-row-end: graph-end;
+    grid-column-start: graph-start;
+    grid-column-end: graph-end;
+    
+    color: cornsilk;
+}
+
+.info-style{
+    grid-row-start: info;
+    grid-row-end: graph-start;
+    grid-column-start: info;
+    grid-column-end: graph-start;
+    
+    color: cornsilk;
+}
+
+.exit-style{
+    grid-row-start: main;
+    grid-row-end: info;
+    grid-column-start: main;
+    grid-column-end: info;
+    
+    color: cornsilk;
 }

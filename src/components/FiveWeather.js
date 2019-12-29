@@ -12,7 +12,7 @@ class FiveWeather extends React.Component {
             data: [{ data: [], day: 0 }],
             lastDay: { data: [], day: 0 }, //maybe used later.
             finishSearch: false,
-            dwOpened: false
+            dwOpened: true
         };
 
         this.insertData = this.insertData.bind(this);
@@ -24,7 +24,7 @@ class FiveWeather extends React.Component {
         //fetches data from api (token is the API-key)
         fetch(
             "https://api.openweathermap.org/data/2.5/forecast?q=Copenhagen,DK&appid=" +
-                token
+            token
         )
             .then(response => {
                 return response.json();
@@ -78,30 +78,23 @@ class FiveWeather extends React.Component {
         return (
             <div>
                 {this.state.dwOpened === true ? (
-                    <DetailedWeather switchToWeathers={this.switchToWeathers} />
-                ) : (
-                    <div className="container">
+                    <DetailedWeather switchToWeathers={this.switchToWeathers} />) :
+                    (<div className="container">
                         <div className="weather-table">
                             {finishSearch === true
                                 ? data.map(item => (
-                                      <Weather
-                                          key={item.day}
-                                          day={item.day}
-                                          data={item.data}
-                                          temperature={Math.round(
-                                              item.data[0].main.temp - 273.15
-                                          )}
-                                          humidity={item.data[0].main.humidity}
-                                          wind={item.data[0].wind.speed}
-                                          switchToDetailed={
-                                              this.switchToDetailed
-                                          }
-                                      />
-                                  ))
-                                : null}
+                                    <Weather
+                                        key={item.day}
+                                        day={item.day}
+                                        data={item.data}
+                                        temperature={Math.round(item.data[0].main.temp - 273.15)}
+                                        humidity={item.data[0].main.humidity}
+                                        wind={item.data[0].wind.speed}
+                                        switchToDetailed={this.switchToDetailed}
+                                    />)) : null}
                         </div>
                     </div>
-                )}
+                    )}
             </div>
         );
     }

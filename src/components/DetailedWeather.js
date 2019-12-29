@@ -1,5 +1,6 @@
 import React from 'react';
 import './DetailedWeather.css';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 class DetailedWeather extends React.Component {
     constructor() {
@@ -13,10 +14,22 @@ class DetailedWeather extends React.Component {
     }
 
     render() {
-
         return (
-            <div className="dw-container" onClick={() => this.props.switchToWeathers()}>
-            </div>
+            <Router>
+                <div className="dw-container">
+                    <div className="graph-style">
+                        graph
+                            </div>
+                    <div className="info-style">
+                        info
+                            </div>
+                    <Link to="/" style={{ textDecoration: 'none' }}>
+                        <div className="exit-style" onClick={() => this.props.switchToWeathers()}>
+                            Exit
+                        </div>
+                    </Link>
+                </div>
+            </Router>
         );
     }
 
