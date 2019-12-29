@@ -9,8 +9,8 @@ class FiveWeather extends React.Component {
         super();
 
         this.state = {
-            data: [{ data: [], day: 0 }],
-            lastDay: { data: [], day: 0 }, //maybe used later.
+            data: [{ data: [], day: 0, temperature: 0 }],
+            lastDay: { data: [], day: 0, temperature: 0 }, //maybe used later.
             finishSearch: false,
             dwOpened: false
         };
@@ -42,19 +42,28 @@ class FiveWeather extends React.Component {
         var currentDay = date1.getDay();
         let tempList = [];
         let cleanedData = [];
+        let averageDegree = 0
+        let count = 0
         listOfWeathers.forEach(element => {
             date2 = new Date(element.dt * 1000);
             if (currentDay !== date2.getDay()) {
-                cleanedData.push({ data: tempList, day: currentDay });
-                tempList = [];
-                currentDay = date2.getDay();
+                averageDegree = Math.round(((averageDegree) / count) - 273.15)
+                cleanedData.push({ data: tempList, day: currentDay, temperature: averageDegree })
+                tempList = []
+                currentDay = date2.getDay()
+                averageDegree = 0
+                count = 0
             }
+            count++
+            averageDegree += element.main.temp
             tempList.push(element);
         });
 
+        averageDegree = Math.round(((averageDegree) / count) - 273.15)
+
         this.setState({
             data: cleanedData,
-            lastDay: { data: tempList, day: currentDay },
+            lastDay: { data: tempList, day: currentDay, temperature: averageDegree },
             finishSearch: true
         });
     }
@@ -74,7 +83,7 @@ class FiveWeather extends React.Component {
 
     render() {
         const { finishSearch, data } = this.state;
-
+        console.log(data)
         return (
             <div>
                 {this.state.dwOpened === true ? (
@@ -87,7 +96,7 @@ class FiveWeather extends React.Component {
                                         key={item.day}
                                         day={item.day}
                                         data={item.data}
-                                        temperature={Math.round(item.data[0].main.temp - 273.15)}
+                                        temperature={item.temperature}
                                         humidity={item.data[0].main.humidity}
                                         wind={item.data[0].wind.speed}
                                         switchToDetailed={this.switchToDetailed}
