@@ -32,7 +32,7 @@ class Weather extends React.Component {
     render() {
         const { wind, data, day, temperature, humidity } = this.state
         const firstData = data[0]
-        console.log(firstData) //debugging
+
         return (
             <Router>
                 <div className="weather-container">

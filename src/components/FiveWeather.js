@@ -44,9 +44,12 @@ class FiveWeather extends React.Component {
         let cleanedData = [];
         let averageDegree = 0
         let count = 0
+
         listOfWeathers.forEach(element => {
-            date2 = new Date(element.dt * 1000);
+            date2 = new Date(element.dt * 1000); // in order to compare dates
+
             if (currentDay !== date2.getDay()) {
+                // calculates the average temperature
                 averageDegree = Math.round(((averageDegree) / count) - 273.15)
                 cleanedData.push({ data: tempList, day: currentDay, temperature: averageDegree })
                 tempList = []
@@ -54,6 +57,7 @@ class FiveWeather extends React.Component {
                 averageDegree = 0
                 count = 0
             }
+
             count++
             averageDegree += element.main.temp
             tempList.push(element);
@@ -83,7 +87,6 @@ class FiveWeather extends React.Component {
 
     render() {
         const { finishSearch, data } = this.state;
-        console.log(data)
         return (
             <div>
                 {this.state.dwOpened === true ? (
