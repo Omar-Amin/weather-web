@@ -76,7 +76,7 @@
     display: grid;
     grid-template-rows: [title] 75px [degrees] 115px [humidity] 50px [wind] 50px [container-end];
     width: 305px;
-    height: 305px;
+    height: 315px;
     overflow: hidden;
 }
 
