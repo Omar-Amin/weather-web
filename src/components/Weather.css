@@ -9,6 +9,7 @@
 }
 
 .card-style {
+    transition: transform 0.2s;
     position: relative;
     background: #212936;
     width: 292px;
@@ -77,12 +78,12 @@
     grid-template-rows: [title] 75px [degrees] 115px [humidity] 50px [wind] 50px [container-end];
     width: 305px;
     height: 315px;
+    padding-left: 10px;
     overflow: hidden;
 }
 
 .card-style:hover {
-    height: 305px;
-    width: 305px;
+    transform: scale(1.05);
     background: rgb(98, 154, 245);
     cursor: pointer;
 }

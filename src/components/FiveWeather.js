@@ -92,6 +92,7 @@ class FiveWeather extends React.Component {
             finishSearch: true
         });
     }
+
     // switch to DetailedWeather when click on a weather
     switchToDetailed(data) {
         this.setState({

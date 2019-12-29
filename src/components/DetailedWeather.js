@@ -27,15 +27,15 @@ class DetailedWeather extends React.Component {
                 <div className="dw-container">
                     <div className="graph-style">
                         graph
-                            </div>
+                    </div>
                     <div className="info-style">
                         info
-                            </div>
-                    <Link to="/" style={{ textDecoration: 'none' }}>
-                        <div className="exit-style" onClick={() => this.props.switchToWeathers()}>
-                            Exit
-                        </div>
-                    </Link>
+                    </div>
+                    <div className="exit-style" >
+                        <Link to="/" style={{ textDecoration: 'none' }}>
+                            <i class="material-icons" onClick={() => this.props.switchToWeathers()}>close</i>
+                        </Link>
+                    </div>
                 </div>
             </Router>
         );

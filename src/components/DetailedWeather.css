@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
 .dw-container{
     display: grid;
     grid-template-rows: [main] 50px [info] 115px [graph-start] 400px [graph-end] 50px [container-end];
@@ -39,4 +41,17 @@
     grid-column-end: info;
     
     color: cornsilk;
+}
+
+.material-icons{
+    transition: transform 0.2s;
+    content: "close";
+    padding: 10px;
+    font-size: 40px;
+    color: #a2aecb;
+}
+
+.material-icons:hover{
+    transform: scale(1.1);
+    color: #b6cdff;
 }
