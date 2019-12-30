@@ -16,10 +16,13 @@ class DetailedWeather extends React.Component {
             wind: 0
         }
 
+        this.setWrapperRef = this.setWrapperRef.bind(this);
+        this.handleClickOutside = this.handleClickOutside.bind(this);
     }
 
     componentWillMount() {
         const { data, city } = this.props
+        document.addEventListener('mousedown', this.handleClickOutside);
 
         this.setState({
             data: data.data,
@@ -31,12 +34,26 @@ class DetailedWeather extends React.Component {
         })
     }
 
+    componentWillUnmount() {
+        document.removeEventListener('mousedown', this.handleClickOutside);
+    }
+
+    setWrapperRef(node) {
+        this.wrapperRef = node;
+    }
+
+    handleClickOutside(event) {
+        if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
+            this.props.switchToWeathers()
+        }
+    }
+
     render() {
         const { humidity, temperature, city, wind, listTemp } = this.state
 
         return (
             <Router>
-                <div className="dw-container">
+                <div className="dw-container" ref={this.setWrapperRef}>
                     <div className="graph-style">
                         <RechartGraph data={listTemp} />
                     </div>
