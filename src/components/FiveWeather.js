@@ -9,7 +9,7 @@ class FiveWeather extends React.Component {
         super();
 
         this.state = {
-            data: [{ data: [], day: 0, temperature: 0, wind: 0, humidity: 0 }],
+            data: [{ data: [], day: 0, temperature: 0, wind: 0, humidity: 0, listTemp: [] }],
             lastDay: { data: [], day: 0, temperature: 0, wind: 0, humidity: 0 }, //maybe used later.
             finishSearch: false,
             dwOpened: false,
@@ -56,6 +56,7 @@ class FiveWeather extends React.Component {
         let count = 0;
         let averageWind = 0;
         let averageHumidity = 0;
+        let listOftemp = [{}]
 
         listOfWeathers.forEach(element => {
             date2 = new Date(element.dt * 1000); // in order to compare dates
@@ -70,8 +71,11 @@ class FiveWeather extends React.Component {
                     day: currentDay,
                     temperature: averageDegree,
                     wind: averageWind,
-                    humidity: averageHumidity
+                    humidity: averageHumidity,
+                    listTemp: listOftemp
                 });
+
+                listOftemp = [{}]
                 tempList = [];
                 currentDay = date2.getDay();
                 averageDegree = 0;
@@ -80,6 +84,8 @@ class FiveWeather extends React.Component {
             }
 
             count++;
+            // list of info for the graph
+            listOftemp.push({ temp: Math.round(element.main.temp - 273.15), hours: date2.getHours() })
             averageDegree += element.main.temp;
             averageWind += element.wind.speed;
             averageHumidity += element.main.humidity;
@@ -119,6 +125,7 @@ class FiveWeather extends React.Component {
 
     render() {
         const { finishSearch, data, currentData, city } = this.state;
+
         return (
             <div>
                 {this.state.dwOpened === true ? (

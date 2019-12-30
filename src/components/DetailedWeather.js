@@ -1,6 +1,7 @@
 import React from 'react';
 import './DetailedWeather.css';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
+import RechartGraph from "./RechartGraph"
 
 class DetailedWeather extends React.Component {
     constructor() {
@@ -25,18 +26,19 @@ class DetailedWeather extends React.Component {
             city: city,
             temperature: data.temperature,
             humidity: data.humidity,
-            wind: data.wind
+            wind: data.wind,
+            listTemp: data.listTemp
         })
     }
 
     render() {
-        const { humidity, temperature, city, wind } = this.state
-        console.log(this.state.data)
+        const { humidity, temperature, city, wind, listTemp } = this.state
+
         return (
             <Router>
                 <div className="dw-container">
                     <div className="graph-style">
-                        graph
+                        <RechartGraph data={listTemp} />
                     </div>
                     <div className="info-style">
                         <div className="city-style">{city}</div>
