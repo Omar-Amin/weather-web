@@ -1,3 +1,8 @@
+# Pictures of the weather app
+![front](screenshots/front.png)
+![hover](screenshots/hover.png)
+![click](screenshots/click.png)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
